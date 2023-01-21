@@ -44,7 +44,7 @@ const PassGen = () => {
         <p className="text-2xl mb-5">Password settings</p>
         <div className="bg-gray-700 p-10 rounded-md">
           <p className="text-xl mb-5">Character Set</p>
-          <div className="flex flex-wrap gap-8 items-center justify-between sm:justify-start">
+          <div className="flex flex-wrap gap-8 items-center justify-between">
             <label className="flex items-center gap-3 flex-wrap">
               <input
                 type="checkbox"
