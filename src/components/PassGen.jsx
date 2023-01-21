@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../style";
 import Password from "../assets/password.svg";
 import Copy from "../assets/copy.svg";
 
 const PassGen = () => {
+  const [rangeValue, setRangeValue] = useState();
+
+  const rangeHandler = (e) => {
+    setRangeValue(e.target.value);
+  };
   return (
     <div
       className={`${styles.paragraph} w-10/12 m-auto py-10 bg-gray-800 mt-10 sm:px-10 px-5 rounded-lg`}
@@ -73,6 +78,26 @@ const PassGen = () => {
               />
               <p className="cursor-pointer">Symbols</p>
             </label>
+          </div>
+          <div className="mt-8">
+            <p>Password length</p>
+            <div className="flex items-center mt-2 gap-5">
+              <input
+                type="number"
+                name="number"
+                className="bg-gray-800 appearance-none outline-0 px-5 h-16 text-white font-thin w-2/12"
+                value={rangeValue}
+                onChange={rangeHandler}
+              />
+              <div className="w-full h-16 border border-gray-500 px-5">
+                <input
+                  type="range"
+                  className="w-full h-16"
+                  value={rangeValue}
+                  onChange={rangeHandler}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
