@@ -4,7 +4,7 @@ import Password from "../assets/password.svg";
 import Copy from "../assets/copy.svg";
 
 const PassGen = () => {
-  const [rangeValue, setRangeValue] = useState();
+  const [rangeValue, setRangeValue] = useState(10);
 
   const rangeHandler = (e) => {
     setRangeValue(e.target.value);
