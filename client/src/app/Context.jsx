@@ -19,15 +19,15 @@ const Index = ({ children }) => {
       var decoded = jwt_decode(token);
       var dateNow = new Date();
       if (decoded.exp * 1000 < dateNow.getTime()) {
-        setUser({ isAuthenticate: false });
+        setUser({ isAuthenticate: false, user: {}, error: null });
         localStorage.removeItem("token");
         setAuthToken("");
       } else {
-        setUser({ isAuthenticate: true });
+        setUser({ isAuthenticate: true, user: decoded, error: null });
         setAuthToken(token);
       }
     } else {
-      setUser({ isAuthenticate: false });
+      setUser({ isAuthenticate: false, user: {}, error: null });
       setAuthToken("");
     }
   };

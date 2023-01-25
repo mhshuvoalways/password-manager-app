@@ -1,13 +1,12 @@
 import { useState, useContext, useEffect } from "react";
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Context } from "../app/Context";
 
 const Navbar = () => {
   const context = useContext(Context);
   const [newNavLinks, setNewNavLinks] = useState([]);
-  const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
@@ -19,19 +18,25 @@ const Navbar = () => {
       const newArr = navLinks.filter((el) => el.title !== "Login");
       setNewNavLinks(newArr);
     } else {
-      const newArr = navLinks.filter((el) => el.title !== "Logout");
-      setNewNavLinks(newArr);
+      const newArr2 = navLinks.filter(
+        (el) =>
+          el.title !== "Logout" &&
+          el.title !== "Generator" &&
+          el.title !== "Manager"
+      );
+      setNewNavLinks(newArr2);
     }
-  }, []);
+  }, [context.user.isAuthenticate]);
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar ">
-      <img
-        src={logo}
-        alt="passwordvault"
-        className="w-[300px] h-[300px] mt-[-100px]"
-      />
-
+      <NavLink to="/">
+        <img
+          src={logo}
+          alt="passwordvault"
+          className="w-[300px] h-[300px] mt-[-100px]"
+        />
+      </NavLink>
       <ul className="list-none sm:flex hidden justify-end items-center flex-1 ">
         {newNavLinks.map((nav, index) => (
           <li
@@ -73,7 +78,7 @@ const Navbar = () => {
                 className={`font-poppins font-medium cursor-pointer text-[16px] hover:text-secondary ${
                   index === newNavLinks.length - 1 ? "mb-0" : "mb-4"
                 }`}
-                onClick={() => setActive(nav.title)}
+                onClick={nav.title === "Logout" && context.logoutHandler}
               >
                 <NavLink
                   to={`${nav.id}`}
