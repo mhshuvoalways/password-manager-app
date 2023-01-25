@@ -16,7 +16,7 @@ app.use("/user", userRouter);
 app.use("/password", passwordRoute);
 
 app.get("/", (req, res) => {
-  res.send("A MERN stack ecommerce app");
+  res.send("Password manager app");
 });
 
 db(app);
