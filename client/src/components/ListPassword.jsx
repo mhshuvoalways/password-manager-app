@@ -81,9 +81,9 @@ const ListOfPassword = ({ modalHandler }) => {
                 />
               </div>
               <div>
-                <p className="text-sm sm:text-xl">{el.website}</p>
-                <p className="text-sm sm:text-xl">{el.username}</p>
-                <p className="text-sm sm:text-xl">{showPass ? el.password : "********"}</p>
+                <p className="text-sm sm:text-xl break-all">{el.website}</p>
+                <p className="text-sm sm:text-xl break-all">{el.username}</p>
+                <p className="text-sm sm:text-xl break-all">{showPass ? el.password : "********"}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
