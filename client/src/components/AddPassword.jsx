@@ -11,6 +11,7 @@ const AddPassword = () => {
     website: "",
     username: "",
     password: "",
+    message: "",
   });
   const [passwordError, setPasswordError] = useState({
     website: "",
@@ -41,7 +42,13 @@ const AddPassword = () => {
           website: "",
           username: "",
           password: "",
+          message: "Added successfully",
         });
+        setTimeout(() => {
+          setPassword({
+            message: "",
+          });
+        }, 3000);
       })
       .catch((err) => {
         setPasswordError({
@@ -127,6 +134,13 @@ const AddPassword = () => {
           >
             Add
           </motion.button>
+          <p
+            className={
+              password.message ? "text-green-600 text-center" : "opacity-0"
+            }
+          >
+            {password.message}
+          </p>
         </form>
         <img src={Password} className="w-full sm:w-6/12" />
       </div>
