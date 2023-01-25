@@ -62,12 +62,12 @@ const AddPassword = () => {
 
   return (
     <div
-      className={`${styles.paragraph} w-10/12 m-auto py-10 bg-gray-800 mt-10 sm:px-10 px-5 rounded-lg`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-gray-800 mt-10 sm:px-10 px-5 rounded-lg`}
     >
       <p className={`text-3xl leading-normal sm:${styles.heading2}`}>
         Add Password
       </p>
-      <div className="flex gap-5 items-center justify-between flex-wrap sm:flex-nowrap">
+      <div className="flex gap-5 items-center justify-center sm:justify-between flex-wrap sm:flex-nowrap">
         <form className="space-y-5" onSubmit={onSubmitHandler}>
           <div>
             <input

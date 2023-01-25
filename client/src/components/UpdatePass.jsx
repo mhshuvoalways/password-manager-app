@@ -60,7 +60,7 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
 
   return (
     <div
-      className={`${styles.paragraph} w-10/12 m-auto py-10 bg-gray-800 mt-10 sm:px-10 px-5 rounded-lg`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-gray-800 mt-10 sm:px-10 px-5 rounded-lg`}
     >
       <div className="flex justify-between">
         <p className={`text-3xl leading-normal sm:${styles.heading2}`}>

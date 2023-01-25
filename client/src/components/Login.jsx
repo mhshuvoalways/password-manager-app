@@ -65,7 +65,7 @@ const Login = () => {
 
   return (
     <div
-      className={`${styles.paragraph} w-10/12 sm:w-5/12 m-auto bg-gray-800 pt-10 pb-20 my-20 sm:px-10 px-5 rounded-lg`}
+      className={`${styles.paragraph} w-full sm:w-5/12 m-auto bg-gray-800 pt-10 pb-20 my-20 sm:px-10 px-5 rounded-lg`}
     >
       <LoginSignTop />
       <form className="space-y-5" onSubmit={onSubmitHandler}>

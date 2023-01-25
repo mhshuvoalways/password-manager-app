@@ -44,7 +44,7 @@ const ListOfPassword = ({ modalHandler }) => {
 
   return (
     <div
-      className={`${styles.paragraph} w-10/12 m-auto py-10 bg-gray-800 mb-20 sm:px-10 px-5 rounded-lg mt-5`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-gray-800 mb-20 sm:px-10 px-5 rounded-lg mt-5`}
     >
       <div className="flex justify-between gap-4 items-center border-b pb-5 border-gray-500 flex-wrap sm:flex-nowrap">
         <p className={`text-3xl leading-normal sm:${styles.heading2}`}>
@@ -81,9 +81,9 @@ const ListOfPassword = ({ modalHandler }) => {
                 />
               </div>
               <div>
-                <p>{el.website}</p>
-                <p>{el.username}</p>
-                <p>{showPass ? el.password : "********"}</p>
+                <p className="text-sm sm:text-xl">{el.website}</p>
+                <p className="text-sm sm:text-xl">{el.username}</p>
+                <p className="text-sm sm:text-xl">{showPass ? el.password : "********"}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
