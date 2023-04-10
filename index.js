@@ -13,19 +13,23 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("/api/user", userRouter);
-app.use("/api/password", passwordRoute);
+app.use("/user", userRouter);
+app.use("/password", passwordRoute);
 
-app.use(express.static(path.resolve(__dirname, "client", "dist")));
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "client", "dist", "index.html"),
-    function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    }
-  );
+app.get("/", (req, res) => {
+  res.send("Password manager app");
 });
+
+// app.use(express.static(path.resolve(__dirname, "client", "dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(
+//     path.resolve(__dirname, "client", "dist", "index.html"),
+//     function (err) {
+//       if (err) {
+//         res.status(500).send(err);
+//       }
+//     }
+//   );
+// });
 
 db(app);
