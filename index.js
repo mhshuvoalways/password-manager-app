@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use("/user", userRouter);
-app.use("/password", passwordRoute);
+app.use("/api/user", userRouter);
+app.use("/api/password", passwordRoute);
 
 app.use(express.static(path.resolve(__dirname, "client", "dist")));
 app.get("*", (req, res) => {
