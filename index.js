@@ -16,18 +16,16 @@ app.use(morgan("dev"));
 app.use("/user", userRouter);
 app.use("/password", passwordRoute);
 
-if (process.env.NODE_ENV !== "production") {
-  app.use(express.static(path.resolve(__dirname, "client", "dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(
-      path.resolve(__dirname, "client", "dist", "index.html"),
-      function (err) {
-        if (err) {
-          res.status(500).send(err);
-        }
+app.use(express.static(path.resolve(__dirname, "client", "dist")));
+app.get("*", (req, res) => {
+  res.sendFile(
+    path.resolve(__dirname, "client", "dist", "index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
       }
-    );
-  });
-}
+    }
+  );
+});
 
 db(app);
