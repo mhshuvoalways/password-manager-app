@@ -1,7 +1,7 @@
 # 🔐Password Vault - Password Manager Application🔑
 
 A password generator tool that creates unique password. Password vault is designed to make managing passwords effortless. Users can generate passwords and save passwords of any social media or website.<br/> 
-It lives at https://password-vault-app.vercel.app
+It lives at https://password-manger-mhs.vercel.app
 
 ```bash
 Feature:
