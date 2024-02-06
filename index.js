@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
 const morgan = require("morgan");
 const db = require("./config/db");
 
@@ -16,16 +15,8 @@ app.use(morgan("dev"));
 app.use("/user", userRouter);
 app.use("/password", passwordRoute);
 
-app.use(express.static(path.resolve(__dirname, "client", "dist")));
 app.get("*", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "client", "dist", "index.html"),
-    function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    }
-  );
+  res.send("I am the API of password vault");
 });
 
 db(app);
