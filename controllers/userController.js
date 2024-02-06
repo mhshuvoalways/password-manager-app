@@ -37,7 +37,7 @@ const register = (req, res) => {
                       fullName: userRes.fullName,
                     },
                     process.env.SECRET,
-                    { expiresIn: "1h" }
+                    { expiresIn: "7d" }
                   );
                   res.status(200).json({
                     message: "Thanks for register!",
@@ -79,7 +79,7 @@ const login = (req, res) => {
                   fullName: response.fullName,
                 },
                 process.env.SECRET,
-                { expiresIn: "1h" }
+                { expiresIn: "7d" }
               );
               res.status(200).json({
                 message: "Welcome back!",
