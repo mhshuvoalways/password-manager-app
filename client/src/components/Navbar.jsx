@@ -19,10 +19,7 @@ const Navbar = () => {
       setNewNavLinks(newArr);
     } else {
       const newArr2 = navLinks.filter(
-        (el) =>
-          el.title !== "Logout" &&
-          el.title !== "Generator" &&
-          el.title !== "Manager"
+        (el) => el.title !== "Logout" && el.title !== "Manager"
       );
       setNewNavLinks(newArr2);
     }

@@ -13,14 +13,7 @@ const Router = () => {
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/about" element={<Home />} />
-        <Route
-          path="/passgen"
-          element={
-            <PrivateRoute>
-              <PassGen />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/passgen" element={<PassGen />} />
         <Route
           path="/passmanager"
           element={
