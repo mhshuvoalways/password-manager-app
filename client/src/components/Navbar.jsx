@@ -18,9 +18,7 @@ const Navbar = () => {
       const newArr = navLinks.filter((el) => el.title !== "Login");
       setNewNavLinks(newArr);
     } else {
-      const newArr2 = navLinks.filter(
-        (el) => el.title !== "Logout" && el.title !== "Manager"
-      );
+      const newArr2 = navLinks.filter((el) => el.title !== "Logout");
       setNewNavLinks(newArr2);
     }
   }, [context.user.isAuthenticate]);
