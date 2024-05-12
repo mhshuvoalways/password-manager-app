@@ -1,13 +1,12 @@
-import React from "react";
-
-const Modal = ({ children, modalHandler }) => {
+const Modal = ({ children }) => {
   return (
-    <div className="fixed inset-0 z-50 py-10 px-10 sm:px-48">
-      {children}
-      <div
-        className="fixed -z-10 inset-0 bg-black opacity-60"
-        onClick={modalHandler}
-      ></div>
+    <div>
+      <div className="fixed w-10/12 mx-auto container inset-0 z-50 flex justify-center items-center">
+        <div className="shadow-lg rounded-lg w-full lg:w-6/12 max-h-[90vh] relative">
+          <div className="px-5 md:px-10 my-10">{children}</div>
+        </div>
+      </div>
+      <p className="fixed inset-0 bg-gray-700 opacity-50 z-40"></p>
     </div>
   );
 };

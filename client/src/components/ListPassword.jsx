@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
+import React, { useContext, useEffect, useState } from "react";
 import { SocialIcon } from "react-social-icons";
-import styles from "../style";
-import Trash from "../assets/trash.svg";
-import Edit from "../assets/edit.svg";
 import { Context } from "../app/Context";
+import Edit from "../assets/edit.svg";
+import Trash from "../assets/trash.svg";
+import styles from "../style";
 import Axios from "../utils/axios";
 
 const ListOfPassword = ({ modalHandler }) => {
@@ -44,7 +44,7 @@ const ListOfPassword = ({ modalHandler }) => {
 
   return (
     <div
-      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-gray-800 mb-20 sm:px-10 px-5 rounded-lg mt-5`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-black-gradient-2 rounded-[20px] box-shadow mb-20 sm:px-10 px-5 mt-5`}
     >
       <div className="flex justify-between gap-4 items-center border-b pb-5 border-gray-500 flex-wrap sm:flex-nowrap">
         <p className={`text-3xl leading-normal sm:${styles.heading2}`}>
@@ -53,7 +53,7 @@ const ListOfPassword = ({ modalHandler }) => {
         <input
           type="text"
           name="search"
-          className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white placeholder-white font-thin w-full sm:w-4/12"
+          className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full sm:w-4/12"
           placeholder="Search..."
           onChange={searchHandler}
         />
@@ -67,10 +67,10 @@ const ListOfPassword = ({ modalHandler }) => {
         />
         <p className="cursor-pointer">Show password</p>
       </label>
-      <div className="mt-10 flex gap-5 justify-between flex-wrap">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-3">
         {reverseArr.map((el) => (
           <div
-            className="flex items-center gap-2 border py-2 px-5 md:w-80 w-full border-gray-500 rounded-lg flex-wrap justify-center sm:justify-between"
+            className="flex items-center gap-2 border py-3 px-5 w-full border-gray-500 rounded-lg flex-wrap justify-center sm:justify-between"
             key={el._id}
           >
             <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap justify-center sm:justify-between">
@@ -83,7 +83,9 @@ const ListOfPassword = ({ modalHandler }) => {
               <div>
                 <p className="text-sm sm:text-xl break-all">{el.website}</p>
                 <p className="text-sm sm:text-xl break-all">{el.username}</p>
-                <p className="text-sm sm:text-xl break-all">{showPass ? el.password : "********"}</p>
+                <p className="text-sm sm:text-xl break-all">
+                  {showPass ? el.password : "********"}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-3">

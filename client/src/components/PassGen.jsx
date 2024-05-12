@@ -75,7 +75,7 @@ const PassGen = () => {
 
   return (
     <div
-      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-gray-800 mt-10 sm:px-10 px-5 rounded-lg`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-black-gradient-2 rounded-[20px] box-shadow mt-10 sm:px-10 px-5`}
     >
       <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap">
         <img src={Password} className="w-20" />

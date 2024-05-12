@@ -67,7 +67,7 @@ const Register = () => {
 
   return (
     <div
-      className={`${styles.paragraph} w-full sm:w-5/12 m-auto bg-gray-800 pt-10 pb-20 my-20 sm:px-10 px-5 rounded-lg`}
+      className={`${styles.paragraph} w-full sm:w-5/12 m-auto bg-black-gradient-2 rounded-[20px] box-shadow pt-10 pb-20 my-20 sm:px-10 px-5`}
     >
       <LoginSignTop />
       <form className="space-y-5" onSubmit={onSubmitHandler}>
@@ -75,7 +75,7 @@ const Register = () => {
           <input
             type="text"
             name="fullName"
-            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white placeholder-white font-thin w-full"
+            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
             placeholder="Enter Your Full Name"
             onChange={onChangeHandler}
           />
@@ -91,7 +91,7 @@ const Register = () => {
           <input
             type="email"
             name="email"
-            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white placeholder-white font-thin w-full"
+            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
             placeholder="Enter Your Email"
             onChange={onChangeHandler}
           />
@@ -107,7 +107,7 @@ const Register = () => {
           <input
             type="password"
             name="password"
-            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white placeholder-white font-thin w-full"
+            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
             placeholder="Enter Your Password"
             onChange={onChangeHandler}
           />

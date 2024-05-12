@@ -44,7 +44,7 @@ const Navbar = () => {
             <NavLink
               to={`${nav.id}`}
               className={({ isActive }) =>
-                isActive ? "text-white" : "text-dimWhite"
+                isActive ? "text-secondary" : "text-dimWhite"
               }
             >
               {nav.title}
@@ -78,7 +78,7 @@ const Navbar = () => {
                 <NavLink
                   to={`${nav.id}`}
                   className={({ isActive }) =>
-                    isActive ? "text-white" : "text-dimWhite"
+                    isActive ? "text-secondary" : "text-dimWhite"
                   }
                 >
                   {nav.title}

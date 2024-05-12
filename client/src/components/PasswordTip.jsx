@@ -4,7 +4,7 @@ import styles from "../style";
 const PasswordTips = () => {
   return (
     <div
-      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-gray-800 mb-20 mt-5 sm:px-10 px-5 rounded-lg`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-black-gradient-2 rounded-[20px] box-shadow mb-20 mt-5 sm:px-10 px-5`}
     >
       <p className={`text-3xl leading-normal ${styles.heading2}`}>Password tips</p>
       <div className="flex justify-between flex-wrap gap-10 mt-10">

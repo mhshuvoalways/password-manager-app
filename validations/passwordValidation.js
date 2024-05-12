@@ -3,9 +3,6 @@ const passwordValidation = (value) => {
   if (!value.website) {
     error.website = "Please provide the website name";
   }
-  if (!value.username) {
-    error.username = "Please provide the username";
-  }
   if (!value.password) {
     error.password = "Please provide the password";
   }

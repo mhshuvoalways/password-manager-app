@@ -60,10 +60,10 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
 
   return (
     <div
-      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-gray-800 mt-10 sm:px-10 px-5 rounded-lg`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-black-gradient-2 rounded-[20px] box-shadow mt-10 sm:px-10 px-5`}
     >
       <div className="flex justify-between">
-        <p className={`text-3xl leading-normal sm:${styles.heading2}`}>
+        <p className={`text-2xl leading-normal`}>
           Update Password
         </p>
         <img
@@ -78,7 +78,7 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
           <input
             type="text"
             name="website"
-            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white placeholder-white font-thin w-full"
+            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
             placeholder="Enter Website"
             onChange={onChangeHandler}
             value={password.website}
@@ -95,7 +95,7 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
           <input
             type="text"
             name="username"
-            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white placeholder-white font-thin w-full"
+            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
             placeholder="Enter Username"
             onChange={onChangeHandler}
             value={password.username}
@@ -112,7 +112,7 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
           <input
             type="password"
             name="password"
-            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white placeholder-white font-thin w-full"
+            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
             placeholder="Enter Password"
             onChange={onChangeHandler}
             value={password.password}
