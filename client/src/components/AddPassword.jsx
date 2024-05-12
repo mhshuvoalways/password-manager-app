@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
-import Axios from "../utils/axios";
-import styles from "../style";
-import Password from "../assets/password.svg";
+import React, { useContext, useState } from "react";
 import { Context } from "../app/Context";
+import Password from "../assets/password.svg";
+import styles from "../style";
+import Axios from "../utils/axios";
 
 const AddPassword = () => {
   const context = useContext(Context);
@@ -15,7 +15,6 @@ const AddPassword = () => {
   });
   const [passwordError, setPasswordError] = useState({
     website: "",
-    username: "",
     password: "",
   });
   const [buttonPress, setButtonPress] = useState(false);
@@ -97,15 +96,6 @@ const AddPassword = () => {
               onChange={onChangeHandler}
               value={password.username}
             />
-            <p
-              className={
-                passwordError.username
-                  ? "text-red-400 mt-1 text-sm"
-                  : "opacity-0"
-              }
-            >
-              {passwordError.username}
-            </p>
           </div>
           <div>
             <input
