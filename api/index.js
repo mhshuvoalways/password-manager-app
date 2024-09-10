@@ -2,10 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const db = require("./config/db");
+const db = require("../config/db");
 
-const userRouter = require("./routers/userRouter");
-const passwordRoute = require("./routers/passwordRoute");
+const userRouter = require("../routers/userRouter");
+const passwordRoute = require("../routers/passwordRoute");
 
 const app = express();
 app.use(express.json());
