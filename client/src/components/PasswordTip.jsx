@@ -6,27 +6,35 @@ const PasswordTips = () => {
     <div
       className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-black-gradient-2 rounded-[20px] box-shadow mb-20 mt-5 sm:px-10 px-5`}
     >
-      <p className={`text-3xl leading-normal ${styles.heading2}`}>Password tips</p>
+      <p className={`text-3xl leading-normal ${styles.heading2}`}>
+        Password tips
+      </p>
       <div className="flex justify-between flex-wrap gap-10 mt-10">
         <div className="w-full sm:w-3/12">
           <p className="w-10 h-10 border rounded-full flex justify-center items-center mb-4">
             1
           </p>
-          <p>Change your passwords periodically.</p>
+          <p>
+            Aim for at least 12–16 characters to make the password harder to
+            guess or crack.
+          </p>
         </div>
         <div className="w-full sm:w-3/12">
           <p className="w-10 h-10 border rounded-full flex justify-center items-center mb-4">
             2
           </p>
-          <p>Never use the same password on multiple sensitive accounts.</p>
+          <p>
+            Combine uppercase, lowercase letters, numbers, and special
+            characters (!, @, #, etc.) for more security.
+          </p>
         </div>
         <div className="w-full sm:w-3/12">
           <p className="w-10 h-10 border rounded-full flex justify-center items-center mb-4">
             3
           </p>
           <p>
-            Use a password with at least 16 characters. It should contain
-            lowercase letters, uppercase letters, numbers, and symbols.
+            Don’t use obvious words, phrases, or patterns like "password123" or
+            "abc123". Avoid using personal info like birthdates or names.
           </p>
         </div>
         <div className="w-full sm:w-3/12">
@@ -34,9 +42,8 @@ const PasswordTips = () => {
             4
           </p>
           <p>
-            Refrain from saving your password in a web browser (Firefox, Chrome,
-            Internet Explorer, Safari). Instead, use a tool which manages an
-            encrypted password locker.
+            Create a memorable but unique phrase, such as
+            "Green$Bird12!RunsFast" instead of single words.
           </p>
         </div>
         <div className="w-full sm:w-3/12">
@@ -44,8 +51,8 @@ const PasswordTips = () => {
             5
           </p>
           <p>
-            Do not log into sensitive accounts while connected to a public Wi-Fi
-            hotspot.
+            Don’t use the same password across multiple websites or apps. Each
+            one should have a unique password.
           </p>
         </div>
         <div className="w-full sm:w-3/12">
@@ -53,8 +60,8 @@ const PasswordTips = () => {
             6
           </p>
           <p>
-            Check that you are using a secure (HTTPS, SSH, SFTP) connection
-            before transmitting your password over the web.
+            Change your passwords periodically and especially after any data
+            breach or suspicious activity.
           </p>
         </div>
       </div>

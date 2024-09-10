@@ -1,24 +1,22 @@
 import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import { Context } from "../app/Context";
-import categories from "../assets/categories.json";
 import Password from "../assets/password.svg";
 import styles from "../style";
 import Axios from "../utils/axios";
-import ListboxComponent from "./ListBox";
 
 const AddPassword = () => {
   const context = useContext(Context);
   const [password, setPassword] = useState({
-    category: categories[0],
     website: "",
+    email: "",
     password: "",
     note: "",
     message: "",
   });
   const [passwordError, setPasswordError] = useState({
-    category: "",
     website: "",
+    email: "",
     password: "",
     note: "",
   });
@@ -54,16 +52,16 @@ const AddPassword = () => {
         context.addPassHandler(response.data);
         setButtonPress(false);
         setPassword({
-          category: categories[0],
           website: "",
+          email: "",
           password: "",
           note: "",
           message: "Added successfully",
         });
         setTimeout(() => {
           setPassword({
-            category: categories[0],
             website: "",
+            email: "",
             password: "",
             note: "",
             message: "",
@@ -72,7 +70,7 @@ const AddPassword = () => {
       })
       .catch((err) => {
         setPasswordError({
-          category: err.response.data.category,
+          email: err.response.data.email,
           website: err.response.data.website,
           password: err.response.data.password,
           note: err.response.data.note,
@@ -91,26 +89,7 @@ const AddPassword = () => {
       <div className="flex gap-5 items-center justify-center sm:justify-between flex-wrap sm:flex-nowrap">
         <form className="space-y-5" onSubmit={onSubmitHandler}>
           <div>
-            <label className="text-sm">Select a category *</label>
-            <div className="mt-1">
-              <ListboxComponent
-                allCategory={categories}
-                value={password.category}
-                categoryHandler={categoryHandler}
-              />
-            </div>
-            <p
-              className={
-                passwordError.password
-                  ? "text-red-400 mt-1 text-sm"
-                  : "opacity-0"
-              }
-            >
-              {passwordError.category}
-            </p>
-          </div>
-          <div>
-            <label className="text-sm">Enter a name *</label>
+            <label className="text-sm">Enter a website URL *</label>
             <input
               type="text"
               name="website"
@@ -127,6 +106,26 @@ const AddPassword = () => {
               }
             >
               {passwordError.website}
+            </p>
+          </div>
+          <div>
+            <label className="text-sm">Enter an email *</label>
+            <input
+              type="text"
+              name="email"
+              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full mt-1"
+              placeholder="johndoe@gmail.com"
+              onChange={onChangeHandler}
+              value={password.email}
+            />
+            <p
+              className={
+                passwordError.email
+                  ? "text-red-400 mt-1 text-sm"
+                  : "opacity-0"
+              }
+            >
+              {passwordError.email}
             </p>
           </div>
           <div>

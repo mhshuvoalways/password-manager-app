@@ -8,20 +8,24 @@ const ListNote = ({ note }) => {
       {note ? (
         <div className="flex items-end text-gray-400">
           <p
-            className={`text-xs mt-1 break-all ${showAll ? "" : "line-clamp"}`}
+            className={`text-xs ${showAll ? "mt-1" : "line-clamp break-all"}`}
             onClick={() => setShowAll(false)}
           >
             {note}{" "}
-            <button className="whitespace-nowrap font-semibold cursor-pointer text-sm hover:text-gray-300">
-              {showAll && "Less"}
-            </button>
+            {note.length > 50 && (
+              <button className="whitespace-nowrap font-semibold cursor-pointer text-sm hover:text-gray-300">
+                {showAll && "Less"}
+              </button>
+            )}
           </p>
-          <button
-            onClick={() => setShowAll(true)}
-            className="whitespace-wrap font-semibold cursor-pointer text-sm hover:text-gray-300"
-          >
-            {!showAll && "More"}
-          </button>
+          {note.length > 50 && (
+            <button
+              onClick={() => setShowAll(true)}
+              className="whitespace-wrap font-semibold cursor-pointer text-sm hover:text-gray-300"
+            >
+              {!showAll && "More"}
+            </button>
+          )}
         </div>
       ) : (
         ""

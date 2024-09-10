@@ -5,15 +5,12 @@ import {
   ListboxOptions,
 } from "@headlessui/react";
 
-export default function ListboxComponent({
-  value,
-  categoryHandler,
-  allCategory,
-  className
-}) {
+export default function ListboxComponent({ value, onChangeHandler, items }) {
   return (
-    <Listbox value={value} onChange={categoryHandler}>
-      <ListboxButton className={`bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white w-full text-start ${className}`}>
+    <Listbox value={value} onChange={onChangeHandler}>
+      <ListboxButton
+        className={`bg-gray-700 appearance-none outline-0 rounded-lg text-white text-start w-20 px-3 !py-0`}
+      >
         {value}
       </ListboxButton>
       <ListboxOptions
@@ -21,7 +18,7 @@ export default function ListboxComponent({
         transition
         className="w-[var(--button-width)] bg-gray-700 rounded-lg text-white focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 z-50"
       >
-        {allCategory?.map((item, index) => (
+        {items?.map((item, index) => (
           <ListboxOption
             key={index}
             value={item}

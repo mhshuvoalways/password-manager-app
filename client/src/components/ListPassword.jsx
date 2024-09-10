@@ -2,57 +2,23 @@ import { motion } from "framer-motion";
 import React, { useContext, useEffect, useState } from "react";
 import { SocialIcon } from "react-social-icons";
 import { Context } from "../app/Context";
-import categories from "../assets/categories.json";
 import Edit from "../assets/edit.svg";
 import Trash from "../assets/trash.svg";
 import styles from "../style";
 import Axios from "../utils/axios";
-import ListboxComponent from "./ListBox";
 import ListNote from "./ListNote";
 import Pagination from "./Pagination";
 
-const itemsEachPage = 12;
+const itemsEachPage = 8;
 
 const ListOfPassword = ({ modalHandler }) => {
   const context = useContext(Context);
   const [buttonPress, setButtonPress] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const [search, setSearch] = useState("");
-  const [allCategory, setAllCategory] = useState([]);
-  const [category, setCategory] = useState("");
-
+  const [searchWebsite, setSearchWebsite] = useState("");
+  const [searchEmail, setSearchEmail] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
-
-  const filteredArray = [...context.listPassword]
-    .reverse()
-    .filter((el) => el.website?.toLowerCase().includes(search?.toLowerCase()))
-    .filter((el) =>
-      el.category
-        ?.toLowerCase()
-        .includes(category === "All" ? "" : category?.toLowerCase())
-    );
-
-  useEffect(() => {
-    setTotalPage(Math.ceil(filteredArray.length / itemsEachPage));
-  }, [filteredArray.length]);
-
-  const pageHandler = (newPage) => {
-    if (newPage > 0 && newPage <= totalPage) {
-      setCurrentPage(newPage);
-    }
-  };
-
-  useEffect(() => {
-    const temp = [...categories];
-    temp.unshift("All");
-    setAllCategory(temp);
-    setCategory(temp[0]);
-  }, []);
-
-  const categoryHandler = (value) => {
-    setCategory(value);
-  };
 
   const deleteHandler = (deleteId) => {
     setButtonPress(true);
@@ -71,17 +37,32 @@ const ListOfPassword = ({ modalHandler }) => {
     setShowPass(!showPass);
   };
 
-  const searchHandler = (e) => {
-    setSearch(e.target.value);
-  };
+  const filteredArray = [...context.listPassword]
+    .reverse()
+    .filter((el) =>
+      el?.website.toLowerCase().includes(searchWebsite?.toLowerCase())
+    )
+    .filter((el) =>
+      el?.email.toLowerCase().includes(searchEmail?.toLowerCase())
+    );
 
   useEffect(() => {
-    context.getPassLists();
-  }, []);
+    setTotalPage(Math.ceil(filteredArray.length / itemsEachPage));
+  }, [filteredArray.length]);
+
+  const pageHandler = (newPage) => {
+    if (newPage > 0 && newPage <= totalPage) {
+      setCurrentPage(newPage);
+    }
+  };
 
   const startIdx = (currentPage - 1) * itemsEachPage;
   const endIdx = startIdx + itemsEachPage;
   const currentCategories = filteredArray.slice(startIdx, endIdx);
+
+  useEffect(() => {
+    context.getPassLists();
+  }, []);
 
   return (
     <div
@@ -95,17 +76,19 @@ const ListOfPassword = ({ modalHandler }) => {
             Passwords ({context.listPassword.length})
           </p>
           <div className="flex items-center gap-x-5 gap-y-2 w-full flex-wrap sm:flex-nowrap">
-            <ListboxComponent
-              allCategory={allCategory}
-              value={category}
-              categoryHandler={categoryHandler}
+            <input
+              type="text"
+              name="search"
+              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
+              placeholder="Search with url..."
+              onChange={(e) => setSearchWebsite(e.target.value)}
             />
             <input
               type="text"
               name="search"
               className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
-              placeholder="Search with name"
-              onChange={searchHandler}
+              placeholder="Search with email..."
+              onChange={(e) => setSearchEmail(e.target.value)}
             />
           </div>
         </div>
@@ -119,7 +102,7 @@ const ListOfPassword = ({ modalHandler }) => {
           <p className="cursor-pointer">Show password</p>
         </label>
       </div>
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-3">
         {currentCategories.map((el) => (
           <div
             className="flex items-start gap-2 border py-3 px-5 border-gray-700 rounded-lg justify-between overflow-x-hidden overflow-y-auto h-36 shadow"
@@ -129,12 +112,12 @@ const ListOfPassword = ({ modalHandler }) => {
               <div>
                 <SocialIcon url={`https://${el.website}`} />
               </div>
-              <div className="text-sm">
-                <p>{el.website}</p>
-                <p className="text-gray-200 break-all">
+              <div>
+                <p className="break-all">{el.website}</p>
+                <p className="text-gray-300 text-sm break-all">{el.email}</p>
+                <p className="text-gray-300 text-sm break-all">
                   {showPass ? el.password : "********"}
                 </p>
-                <p className="text-gray-300 uppercase">{el.category}</p>
                 <ListNote note={el.note} />
               </div>
             </div>

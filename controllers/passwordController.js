@@ -3,17 +3,17 @@ const serverError = require("../utils/serverError");
 const { passwordValidation } = require("../validations/passwordValidation");
 
 const addPassword = (req, res) => {
-  const { website, category, password, note } = req.body;
+  const { website, email, password, note } = req.body;
   const validation = passwordValidation({
     website,
-    category,
+    email,
     password,
   });
   if (validation.isValid) {
     const passObj = {
       author: req.user._id,
       website,
-      category,
+      email,
       password,
       note,
     };
@@ -42,16 +42,16 @@ const getPassword = (req, res) => {
 
 const updatePassword = (req, res) => {
   const { updateId } = req.params;
-  const { website, category, password, note } = req.body;
+  const { website, email, password, note } = req.body;
   const validation = passwordValidation({
     website,
-    category,
+    email,
     password,
   });
   if (validation.isValid) {
     const passObj = {
       website,
-      category,
+      email,
       password,
       note,
     };

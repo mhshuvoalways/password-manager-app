@@ -1,13 +1,13 @@
 const passwordValidation = (value) => {
   const error = {};
-  if (!value.category) {
-    error.category = "Please provide a category name";
+  if (!value.email) {
+    error.email = "Enter an email";
   }
   if (!value.website) {
-    error.website = "Please provide a website name";
+    error.website = "Enter a website url";
   }
   if (!value.password) {
-    error.password = "Please provide a password";
+    error.password = "Enter a password";
   }
 
   let isValid = Object.keys(error).length === 0;

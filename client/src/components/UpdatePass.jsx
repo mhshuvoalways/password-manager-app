@@ -4,19 +4,19 @@ import { Context } from "../app/Context";
 import ModalClose from "../assets/close.svg";
 import styles from "../style";
 import Axios from "../utils/axios";
-import ListboxComponent from "./ListBox";
 
 const UpdatePassword = ({ modalHandler, updateId }) => {
   const context = useContext(Context);
   const [password, setPassword] = useState({
     website: "",
-    category: "",
+    email: "",
     password: "",
     note: "",
+    message: "",
   });
   const [passwordError, setPasswordError] = useState({
     website: "",
-    category: "",
+    email: "",
     password: "",
     note: "",
   });
@@ -55,8 +55,8 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
       })
       .catch((err) => {
         setPasswordError({
+          email: err.response.data.email,
           website: err.response.data.website,
-          category: err.response.data.category,
           password: err.response.data.password,
           note: err.response.data.note,
         });
@@ -67,8 +67,8 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
   useEffect(() => {
     const findPass = context.listPassword.find((el) => el._id === updateId);
     setPassword({
+      email: findPass.email,
       website: findPass.website,
-      category: findPass.category,
       password: findPass.password,
       note: findPass.note,
     });
@@ -89,23 +89,7 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
       </div>
       <form className="space-y-5 mt-5" onSubmit={onSubmitHandler}>
         <div>
-          <label className="text-sm">Select a category *</label>
-          <div className="mt-1">
-            <ListboxComponent
-              value={password.category}
-              categoryHandler={categoryHandler}
-            />
-          </div>
-          <p
-            className={
-              passwordError.category ? "text-red-400 mt-1 text-sm" : "opacity-0"
-            }
-          >
-            {passwordError.category}
-          </p>
-        </div>
-        <div>
-          <label className="text-sm">Enter a name *</label>
+          <label className="text-sm">Enter a website URL *</label>
           <input
             type="text"
             name="website"
@@ -120,6 +104,24 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
             }
           >
             {passwordError.website}
+          </p>
+        </div>
+        <div>
+          <label className="text-sm">Enter an email *</label>
+          <input
+            type="text"
+            name="email"
+            className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full mt-1"
+            placeholder="johndoe@gmail.com"
+            onChange={onChangeHandler}
+            value={password.email}
+          />
+          <p
+            className={
+              passwordError.email ? "text-red-400 mt-1 text-sm" : "opacity-0"
+            }
+          >
+            {passwordError.email}
           </p>
         </div>
         <div>

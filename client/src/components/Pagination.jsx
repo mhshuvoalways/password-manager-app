@@ -29,10 +29,9 @@ const index = ({ currentPage, totalPage, pageHandler }) => {
           <Button place="left" onClick={() => pageHandler(currentPage - 1)} />
         </div>
         <ListBox
-          allCategory={items}
-          className="w-20 px-3 !py-0 bg-gray-700"
+          items={items}
           value={currentPage?.toString()}
-          categoryHandler={(value) => pageHandler(Number(value))}
+          onChangeHandler={(value) => pageHandler(Number(value))}
         />
         <div>
           <Button place="right" onClick={() => pageHandler(currentPage + 1)} />
