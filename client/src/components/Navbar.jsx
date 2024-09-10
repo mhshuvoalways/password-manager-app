@@ -39,7 +39,7 @@ const Navbar = () => {
             className={`font-poppins font-normal cursor-pointer text-[16px] hover:text-secondary ${
               index === newNavLinks.length - 1 ? "mr-0" : "mr-10"
             }`}
-            onClick={nav.title === "Logout" && context.logoutHandler}
+            onClick={() => nav.title === "Logout" && context.logoutHandler()}
           >
             <NavLink
               to={`${nav.id}`}
@@ -73,7 +73,7 @@ const Navbar = () => {
                 className={`font-poppins font-medium cursor-pointer text-[16px] hover:text-secondary ${
                   index === newNavLinks.length - 1 ? "mb-0" : "mb-4"
                 }`}
-                onClick={nav.title === "Logout" && context.logoutHandler}
+                onClick={() => nav.title === "Logout" && context.logoutHandler()}
               >
                 <NavLink
                   to={`${nav.id}`}

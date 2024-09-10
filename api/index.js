@@ -15,7 +15,7 @@ app.use(morgan("dev"));
 app.use("/user", userRouter);
 app.use("/password", passwordRoute);
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.send("I am the API of password vault");
 });
 
