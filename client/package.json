@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.5",
     "axios": "^1.2.3",
     "check-password-strength": "^2.0.7",
     "framer-motion": "^8.5.0",

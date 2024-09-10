@@ -8,14 +8,14 @@ import Password from "../assets/password.svg";
 import Copy from "../assets/copy.svg";
 
 const PassGen = () => {
-  const [passwords, setPasswords] = useState("!g?n?Z0LQsiO0Ik/w$uf");
+  const [passwords, setPasswords] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [characters, setCharacters] = useState({
     numbers: true,
     symbols: true,
     lowercase: true,
     uppercase: true,
-    length: 15,
+    length: 10,
   });
   const [copyToClipboard, setCopyToClipboard] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -39,6 +39,7 @@ const PassGen = () => {
         lowercase: characters.lowercase,
         uppercase: characters.uppercase,
         length: characters.length,
+        strict: true
       });
       setPasswords(genPassword[0]);
     }
@@ -89,7 +90,7 @@ const PassGen = () => {
       <div className="flex mt-10 gap-5 justify-between flex-wrap sm:flex-nowrap">
         <div className="w-full">
           <div
-            className={`flex items-center border-4 ${
+            className={`flex items-center border-4 rounded-t-md ${
               (passwordCheck === "Too weak" && "border-red-600") ||
               (passwordCheck === "Weak" && "border-red-500") ||
               (passwordCheck === "Medium" && "border-yellow-300") ||
@@ -113,7 +114,7 @@ const PassGen = () => {
             </CopyToClipboard>
           </div>
           <p
-            className={`py-2 text-center font-bold ${
+            className={`py-2 text-center font-bold rounded-b-md ${
               (passwordCheck === "Too weak" && "bg-red-600") ||
               (passwordCheck === "Weak" && "bg-red-500") ||
               (passwordCheck === "Medium" && "bg-yellow-300") ||
@@ -123,7 +124,7 @@ const PassGen = () => {
             {passwordCheck}
           </p>
           <p className="text-red-400 text-center mt-2">{errorMessage}</p>
-          <p className="text-gray-400 text-center mt-2">
+          <p className="text-green-500 text-center mt-2">
             {copyToClipboard && "Copied"}
           </p>
         </div>
@@ -188,11 +189,11 @@ const PassGen = () => {
               <input
                 type="number"
                 name="length"
-                className="bg-gray-800 appearance-none outline-0 px-5 h-16 text-white font-thin w-full sm:w-2/12"
+                className="bg-gray-800 appearance-none outline-0 px-5 h-16 text-white font-thin w-full sm:w-2/12 rounded-md"
                 value={characters.length}
                 onChange={charactersLengthHandler}
               />
-              <div className="w-full h-16 border border-gray-500 px-5">
+              <div className="w-full h-16 border border-gray-700 px-5 rounded-md">
                 <input
                   type="range"
                   name="length"

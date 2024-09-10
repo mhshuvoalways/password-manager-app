@@ -125,7 +125,7 @@ const Register = () => {
             buttonPress && "opacity-50 cursor-not-allowed"
           }`}
         >
-          Submit
+          Register
         </motion.button>
         <p
           className={

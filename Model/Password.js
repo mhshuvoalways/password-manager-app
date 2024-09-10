@@ -7,16 +7,20 @@ const passSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "user",
     },
+    category: {
+      type: String,
+      required: true,
+    },
     website: {
       type: String,
       required: true,
     },
-    username: {
-      type: String,
-    },
     password: {
       type: String,
       required: true,
+    },
+    note: {
+      type: String,
     },
   },
   {

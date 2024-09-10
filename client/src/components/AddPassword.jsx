@@ -1,23 +1,39 @@
 import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import { Context } from "../app/Context";
+import categories from "../assets/categories.json";
 import Password from "../assets/password.svg";
 import styles from "../style";
 import Axios from "../utils/axios";
+import ListboxComponent from "./ListBox";
 
 const AddPassword = () => {
   const context = useContext(Context);
   const [password, setPassword] = useState({
+    category: categories[0],
     website: "",
-    username: "",
     password: "",
+    note: "",
     message: "",
   });
   const [passwordError, setPasswordError] = useState({
+    category: "",
     website: "",
     password: "",
+    note: "",
   });
   const [buttonPress, setButtonPress] = useState(false);
+
+  const categoryHandler = (value) => {
+    setPassword({
+      ...password,
+      category: value,
+    });
+    setPasswordError({
+      ...passwordError,
+      category: "",
+    });
+  };
 
   const onChangeHandler = (e) => {
     setPassword({
@@ -38,22 +54,28 @@ const AddPassword = () => {
         context.addPassHandler(response.data);
         setButtonPress(false);
         setPassword({
+          category: categories[0],
           website: "",
-          username: "",
           password: "",
+          note: "",
           message: "Added successfully",
         });
         setTimeout(() => {
           setPassword({
+            category: categories[0],
+            website: "",
+            password: "",
+            note: "",
             message: "",
           });
         }, 3000);
       })
       .catch((err) => {
         setPasswordError({
+          category: err.response.data.category,
           website: err.response.data.website,
-          username: err.response.data.username,
           password: err.response.data.password,
+          note: err.response.data.note,
         });
         setButtonPress(false);
       });
@@ -69,11 +91,31 @@ const AddPassword = () => {
       <div className="flex gap-5 items-center justify-center sm:justify-between flex-wrap sm:flex-nowrap">
         <form className="space-y-5" onSubmit={onSubmitHandler}>
           <div>
+            <label className="text-sm">Select a category *</label>
+            <div className="mt-1">
+              <ListboxComponent
+                allCategory={categories}
+                value={password.category}
+                categoryHandler={categoryHandler}
+              />
+            </div>
+            <p
+              className={
+                passwordError.password
+                  ? "text-red-400 mt-1 text-sm"
+                  : "opacity-0"
+              }
+            >
+              {passwordError.category}
+            </p>
+          </div>
+          <div>
+            <label className="text-sm">Enter a name *</label>
             <input
               type="text"
               name="website"
-              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
-              placeholder="Enter Website *"
+              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full mt-1"
+              placeholder="facebook.com"
               onChange={onChangeHandler}
               value={password.website}
             />
@@ -88,21 +130,12 @@ const AddPassword = () => {
             </p>
           </div>
           <div>
-            <input
-              type="text"
-              name="username"
-              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
-              placeholder="Enter Username"
-              onChange={onChangeHandler}
-              value={password.username}
-            />
-          </div>
-          <div>
+            <label className="text-sm">Enter a password *</label>
             <input
               type="password"
               name="password"
-              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full"
-              placeholder="Enter Password *"
+              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full mt-1"
+              placeholder="******"
               onChange={onChangeHandler}
               value={password.password}
             />
@@ -115,6 +148,16 @@ const AddPassword = () => {
             >
               {passwordError.password}
             </p>
+          </div>
+          <div>
+            <label className="text-sm">Additional note</label>
+            <textarea
+              name="note"
+              className="bg-gray-700 appearance-none outline-0 px-3 py-2 rounded-lg text-white font-thin w-full mt-1"
+              placeholder="What was your childhood name?"
+              onChange={onChangeHandler}
+              value={password.note}
+            />
           </div>
           <motion.button
             whileTap={{ scale: 0.95 }}
