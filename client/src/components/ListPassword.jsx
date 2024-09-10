@@ -26,11 +26,11 @@ const ListOfPassword = ({ modalHandler }) => {
 
   const filteredArray = [...context.listPassword]
     .reverse()
-    .filter((el) => el.website.toLowerCase().includes(search.toLowerCase()))
+    .filter((el) => el.website?.toLowerCase().includes(search?.toLowerCase()))
     .filter((el) =>
       el.category
-        .toLowerCase()
-        .includes(category === "All" ? "" : category.toLowerCase())
+        ?.toLowerCase()
+        .includes(category === "All" ? "" : category?.toLowerCase())
     );
 
   useEffect(() => {
@@ -134,9 +134,7 @@ const ListOfPassword = ({ modalHandler }) => {
                 <p className="text-gray-200 break-all">
                   {showPass ? el.password : "********"}
                 </p>
-                <p className="text-gray-300 uppercase">
-                  {el.category}
-                </p>
+                <p className="text-gray-300 uppercase">{el.category}</p>
                 <ListNote note={el.note} />
               </div>
             </div>
