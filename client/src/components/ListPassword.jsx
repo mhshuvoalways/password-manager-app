@@ -11,7 +11,7 @@ import Pagination from "./Pagination";
 
 const itemsEachPage = 8;
 
-const ListOfPassword = ({ modalHandler }) => {
+const ListOfPassword = ({ modalHandler, reorderHandler }) => {
   const context = useContext(Context);
   const [buttonPress, setButtonPress] = useState(false);
   const [showPass, setShowPass] = useState(false);
@@ -38,7 +38,7 @@ const ListOfPassword = ({ modalHandler }) => {
   };
 
   const filteredArray = [...context.listPassword]
-    .reverse()
+    .sort((a, b) => b.itemPosition - a.itemPosition)
     .filter((el) =>
       el?.website.toLowerCase().includes(searchWebsite?.toLowerCase())
     )
@@ -92,15 +92,23 @@ const ListOfPassword = ({ modalHandler }) => {
             />
           </div>
         </div>
-        <label className="flex items-center justify-start md:justify-end gap-3 flex-wrap mt-2">
-          <input
-            type="checkbox"
-            checked={showPass}
-            className="w-5 h-5 rounded-lg cursor-pointer"
-            onChange={showpassHandler}
-          />
-          <p className="cursor-pointer">Show password</p>
-        </label>
+        <div className="flex items-center gap-x-5 gap-y-2 justify-start md:justify-end flex-wrap mt-2">
+          <button
+            className="bg-gray-700 px-3 py-1 rounded-lg"
+            onClick={() => reorderHandler()}
+          >
+            Reorganize
+          </button>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={showPass}
+              className="w-5 h-5 rounded-lg cursor-pointer"
+              onChange={showpassHandler}
+            />
+            <p className="cursor-pointer">Show password</p>
+          </label>
+        </div>
       </div>
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-3">
         {currentCategories.map((el) => (

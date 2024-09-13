@@ -6,7 +6,7 @@ import styles from "../style";
 import Axios from "../utils/axios";
 
 const AddPassword = () => {
-  const context = useContext(Context);
+  const { addPassHandler, listPassword } = useContext(Context);
   const [password, setPassword] = useState({
     website: "",
     email: "",
@@ -22,17 +22,6 @@ const AddPassword = () => {
   });
   const [buttonPress, setButtonPress] = useState(false);
 
-  const categoryHandler = (value) => {
-    setPassword({
-      ...password,
-      category: value,
-    });
-    setPasswordError({
-      ...passwordError,
-      category: "",
-    });
-  };
-
   const onChangeHandler = (e) => {
     setPassword({
       ...password,
@@ -47,9 +36,13 @@ const AddPassword = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setButtonPress(true);
-    Axios.post("/password/add", password)
+    const obj = {
+      ...password,
+      itemPosition: listPassword.length + 1,
+    };
+    Axios.post("/password/add", obj)
       .then((response) => {
-        context.addPassHandler(response.data);
+        addPassHandler(response.data);
         setButtonPress(false);
         setPassword({
           website: "",
@@ -120,9 +113,7 @@ const AddPassword = () => {
             />
             <p
               className={
-                passwordError.email
-                  ? "text-red-400 mt-1 text-sm"
-                  : "opacity-0"
+                passwordError.email ? "text-red-400 mt-1 text-sm" : "opacity-0"
               }
             >
               {passwordError.email}

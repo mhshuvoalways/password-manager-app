@@ -126,3 +126,13 @@
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+
+.reorderScroll::-webkit-scrollbar {
+  width: 5px;
+  background: #0b6f72;
+  border-radius: 100px;
+}
+.reorderScroll::-webkit-scrollbar-thumb {
+  background: #17cce7;
+  border-radius: 100px;
+}

@@ -1,25 +1,32 @@
 import React, { useState } from "react";
-import styles from "../style";
 import {
-  Footer,
-  Navbar,
   AddPassword,
+  Footer,
   ListPassword,
-  UpdatePass,
   Modal,
+  Navbar,
+  ReOrder,
+  UpdatePass,
 } from "../components";
+import styles from "../style";
 
 const PassManagerPage = () => {
   const [modal, setModal] = useState({
     modal: false,
-    updateId: "",
+    value: "",
   });
+
+  const [modalReorder, setModalReorder] = useState(false);
 
   const modalHandler = (id) => {
     setModal({
       modal: !modal.modal,
-      updateId: id,
+      value: id,
     });
+  };
+
+  const reorderHandler = () => {
+    setModalReorder(!modalReorder);
   };
 
   return (
@@ -32,13 +39,18 @@ const PassManagerPage = () => {
       <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <AddPassword />
-          <ListPassword modalHandler={modalHandler} />
-          {modal.modal && (
+          <ListPassword
+            modalHandler={modalHandler}
+            reorderHandler={reorderHandler}
+          />
+          {modal.modal && modal.value && (
             <Modal modalHandler={modalHandler}>
-              <UpdatePass
-                modalHandler={modalHandler}
-                updateId={modal.updateId}
-              />
+              <UpdatePass modalHandler={modalHandler} updateId={modal.value} />
+            </Modal>
+          )}
+          {modalReorder && (
+            <Modal modalHandler={reorderHandler}>
+              <ReOrder modalHandler={reorderHandler} />
             </Modal>
           )}
           <Footer />

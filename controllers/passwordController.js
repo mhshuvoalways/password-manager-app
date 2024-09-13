@@ -3,7 +3,7 @@ const serverError = require("../utils/serverError");
 const { passwordValidation } = require("../validations/passwordValidation");
 
 const addPassword = (req, res) => {
-  const { website, email, password, note } = req.body;
+  const { website, email, password, note, itemPosition } = req.body;
   const validation = passwordValidation({
     website,
     email,
@@ -16,6 +16,7 @@ const addPassword = (req, res) => {
       email,
       password,
       note,
+      itemPosition
     };
     new Password(passObj)
       .save()
@@ -67,6 +68,21 @@ const updatePassword = (req, res) => {
   }
 };
 
+const reorderPasswords = (req, res) => {
+  const updates = req.body;
+  Promise.all(
+    updates.map((update) =>
+      Password.updateOne({ _id: update._id }, { $set: update })
+    )
+  )
+    .then(() => {
+      res.status(200).json("Reorderd successfully");
+    })
+    .catch(() => {
+      serverError(res);
+    });
+};
+
 const deletePassword = (req, res) => {
   const { deleteId } = req.params;
   Password.findOneAndRemove({ _id: deleteId })
@@ -78,4 +94,10 @@ const deletePassword = (req, res) => {
     });
 };
 
-module.exports = { addPassword, getPassword, updatePassword, deletePassword };
+module.exports = {
+  addPassword,
+  getPassword,
+  updatePassword,
+  reorderPasswords,
+  deletePassword,
+};

@@ -17,10 +17,6 @@ export const navLinks = [
     title: "Home",
   },
   {
-    id: "/about",
-    title: "About",
-  },
-  {
     id: "/passgen",
     title: "Generator",
   },

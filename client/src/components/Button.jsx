@@ -8,7 +8,7 @@ const Button = ({ styles }) => {
   let auth = context.user.isAuthenticate;
 
   return (
-    <Link to={auth ? "/passgen" : "/login"}>
+    <Link to={auth ? "/passmanager" : "/login"}>
       <motion.button
         whileTap={{ scale: 0.95 }}
         type="button"

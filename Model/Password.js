@@ -22,6 +22,7 @@ const passSchema = new Schema(
     note: {
       type: String,
     },
+    itemPosition: Number,
   },
   {
     timestamps: true,

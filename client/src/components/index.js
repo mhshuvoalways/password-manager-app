@@ -1,33 +1,35 @@
-import Navbar from "./Navbar";
 import About from "./About";
-import GetStartedCard from "./GetStartedCard";
-import Stats from "./Stats";
+import AddPassword from "./AddPassword";
 import Footer from "./Footer";
-import Reviews from "./Reviews";
+import GetStartedCard from "./GetStartedCard";
 import Hero from "./Hero";
-import Register from "./Register";
+import ListPassword from "./ListPassword";
 import Login from "./Login";
+import Modal from "./Modal";
+import Navbar from "./Navbar";
 import PassGen from "./PassGen";
 import PasswordTip from "./PasswordTip";
-import AddPassword from "./AddPassword";
-import ListPassword from "./ListPassword";
+import Register from "./Register";
+import ReOrder from "./ReOrder";
+import Reviews from "./Reviews";
+import Stats from "./Stats";
 import UpdatePass from "./UpdatePass";
-import Modal from "./Modal";
 
 export {
-  Navbar,
   About,
-  GetStartedCard,
-  Stats,
+  AddPassword,
   Footer,
-  Reviews,
+  GetStartedCard,
   Hero,
-  Register,
+  ListPassword,
   Login,
+  Modal,
+  Navbar,
   PassGen,
   PasswordTip,
-  AddPassword,
-  ListPassword,
+  ReOrder,
+  Register,
+  Reviews,
+  Stats,
   UpdatePass,
-  Modal,
 };

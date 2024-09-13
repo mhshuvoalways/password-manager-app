@@ -1,7 +1,7 @@
-import React, { useState, createContext } from "react";
 import jwt_decode from "jwt-decode";
-import setAuthToken from "../utils/setAuthToken";
+import React, { createContext, useState } from "react";
 import Axios from "../utils/axios";
+import setAuthToken from "../utils/setAuthToken";
 
 export const Context = createContext();
 
@@ -75,6 +75,7 @@ const Index = ({ children }) => {
         isAuthenticateHandler: isAuthenticateHandler,
         logoutHandler: logoutHandler,
         listPassword: listPassword,
+        setListPassword: setListPassword,
         addPassHandler: addPassHandler,
         getPassLists: getPassLists,
         updatePassHandler: updatePassHandler,

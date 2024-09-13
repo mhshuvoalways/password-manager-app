@@ -22,17 +22,6 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
   });
   const [buttonPress, setButtonPress] = useState(false);
 
-  const categoryHandler = (value) => {
-    setPassword({
-      ...password,
-      category: value,
-    });
-    setPasswordError({
-      ...passwordError,
-      category: "",
-    });
-  };
-
   const onChangeHandler = (e) => {
     setPassword({
       ...password,
@@ -76,7 +65,7 @@ const UpdatePassword = ({ modalHandler, updateId }) => {
 
   return (
     <div
-      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-black-gradient-2 rounded-[20px] box-shadow mt-10 sm:px-10 px-5`}
+      className={`${styles.paragraph} w-full sm:w-10/12 m-auto py-10 bg-black-gradient-2 rounded-[20px] box-shadow sm:px-10 px-5`}
     >
       <div className="flex justify-between">
         <p className={`text-2xl leading-normal`}>Update Password</p>
